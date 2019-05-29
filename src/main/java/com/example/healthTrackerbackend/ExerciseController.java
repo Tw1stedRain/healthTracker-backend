@@ -19,7 +19,7 @@ public class ExerciseController {
         repo.save(exercise);
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public List getAllExercises() {
         return repo.findAll();
     }
