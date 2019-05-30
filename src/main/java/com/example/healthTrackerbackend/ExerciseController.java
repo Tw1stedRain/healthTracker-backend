@@ -13,10 +13,11 @@ public class ExerciseController {
     ExerciseRepo repo;
 
     @PostMapping("/")
-    public void createExercise(
+    public Exercise createExercise(
             @RequestBody Exercise exercise
     ) {
-        repo.save(exercise);
+        Exercise exercise1 = repo.save(exercise);
+        return exercise1;
     }
 
     @GetMapping("/all")

@@ -1,5 +1,6 @@
 package com.example.healthTrackerbackend;
 
+import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,8 +43,13 @@ public class ExerciseControllerTest {
         exercise.setDescription("taptaptap");
         exercise.setTimeStamp("ugh");
 
+        Gson gson = new Gson();
+        String data = gson.toJson(exercise);
+
         mockMvc.perform(MockMvcRequestBuilders.post("/exercise/")
-                .param("title","click"))
+                .contentType("application/json")
+                .content(data)
+        )
                 .andExpect(status().isOk());
     }
 
